@@ -1,0 +1,278 @@
+/* ==================== 1. 基本設定與首頁樣式 ==================== */
+body {
+  font-family: "Microsoft JhengHei", sans-serif;
+  margin: 0;
+  background-color: #f4f7f6;
+  color: #333;
+}
+
+/* 導覽列 */
+.navbar {
+  background-color: #2c3e50;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+/* 下拉選單核心邏輯 */
+.dropdown {
+  position: relative;
+}
+
+.nav-links li a, .dropbtn {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 22px 26px;
+  text-decoration: none;
+  font-weight: 300;
+}
+
+.nav-links li a:hover, .dropdown:hover .dropbtn {
+  background-color: #34495e;
+}
+
+.dropdown-content {
+  display: none; /* 平時隱藏 */
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black !important;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block; /* 滑鼠移入時顯示 */
+}
+
+/* 首頁大標題 (Hero Section) */
+.hero-section {
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+              url('https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=2059&auto=format&fit=crop'); 
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+/* 內容區塊 */
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.info-block {
+  background: white;
+  margin-bottom: 20px;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.info-block h2 {
+  color: #2c3e50;
+  border-left: 5px solid #e74c3c;
+  padding-left: 10px;
+  margin-top: 0;
+}
+
+.qa-item {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px dashed #ddd;
+}
+
+
+/* ==================== 2. 你最愛的內頁卡片排版樣式 ==================== */
+
+/* 核心：控制切換頁面的隱藏與顯示 */
+.page {
+  display: none; /* 預設把所有房間藏起來 */
+}
+.page.active {
+  display: block; /* 只有加上 active 的房間才會顯示 */
+  animation: fadeIn 0.4s ease-in-out; /* 切換時有精美淡入效果 */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 內頁容器 */
+.law-page-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.category-title {
+  text-align: center;
+  color: #2c3e50;
+  font-size: 2rem;
+  border-bottom: 3px solid #34495e;
+  padding-bottom: 10px;
+}
+
+.category-subtitle {
+  text-align: center;
+  color: #7f8c8d;
+  margin-bottom: 40px;
+}
+
+/* 韓劇卡片通用設計 */
+.drama-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+  padding: 25px;
+  transition: transform 0.3s ease;
+}
+
+.drama-card:hover {
+  transform: translateY(-5px); /* 滑鼠移上去輕微浮動互動 */
+}
+
+/* 幫不同職業別設計彩色左邊條 */
+.law-card { border-left: 10px solid #2980b9; }       /* 專業律師藍 */
+.medical-card { border-left: 10px solid #16a085; }   /* 翡翠醫療綠 */
+.workplace-card { border-left: 10px solid #7f8c8d; } /* 寫實職場灰 */
+
+.drama-name {
+  color: #2c3e50;
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.drama-highlights, .drama-review {
+  margin: 15px 0;
+  line-height: 1.6;
+}
+
+/* 讓卡片裡的粗體字跟邊條顏色呼應 */
+.law-card strong { color: #2980b9; }
+.medical-card strong { color: #16a085; }
+.workplace-card strong { color: #7f8c8d; }
+
+strong {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* 影片連結按鈕 */
+.video-btn {
+  display: inline-block;
+  background-color: #e74c3c;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: background 0.3s;
+}
+
+.video-btn:hover {
+  background-color: #c0392b;
+}
+
+/* 返回首頁的質感按鈕 */
+.back-home-btn {
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 20px;
+}
+.back-home-btn:hover {
+  background-color: #34495e;
+}
+/* 尋找 CSS 格子最下面這段，改成淺紫色： */
+.historical-mystery-card {
+  border-left: 10px solid #b47bee; /* ⬅️ 這裡改成溫柔的淺紫色 */
+}
+/* 幫奇幻古裝劇設計夢幻粉藍色的左邊條與字體顏色 */
+.historical-fantasy-card {
+  border-left: 10px solid #1e3799; /* 夢幻粉藍 */
+}
+
+.historical-fantasy-card strong {
+  color: #1e3799;
+}
+/* 幫校園戀愛劇設計青春粉紅色的左邊條與字體顏色 */
+.school-romance-card {
+  border-left: 10px solid #ff7675; /* 初戀粉紅 */
+}
+/* 尋找 CSS 格子最下面這段，把紫色改成夢幻極光綠： */
+.fantasy-romance-card {
+  border-left: 10px solid #1abc9c; /* ⬅️ 這裡改成極光綠 */
+}
+/* 幫懸疑劇設計神祕偵探深綠色的左邊條與字體顏色 */
+.mystery-thriller-card {
+  border-left: 10px solid #117a65; /* 偵探深綠 */
+}
+
+.mystery-thriller-card strong {
+  color: #117a65;
+}
+/* 幫黑暗人性劇設計暗夜血紅色的左邊條與字體顏色 */
+.mystery-dark-card {
+  border-left: 10px solid #9c2c2c; /* 暗夜血紅 */
+}
+/* 幫催淚劇設計溫暖落日橙色的左邊條與字體顏色 */
+.life-tears-card {
+  border-left: 10px solid #e67e22; /* 溫暖落日橙 */
+}
+/* 幫溫馨療癒劇設計向日葵黃色的左邊條與字體顏色 */
+.life-healing-card {
+  border-left: 10px solid #f1c40f; /* 溫馨向日葵黃 */
+}
+/* 🌱 幫青春成長故事劇設計薄荷綠色的左邊條與字體顏色 */
+.life-growth-card {
+  border-left: 10px solid #2ecc71; /* 青春薄荷綠 */
+}
